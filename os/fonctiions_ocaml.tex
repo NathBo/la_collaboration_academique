@@ -1,4 +1,5 @@
 \documentclass{article}
+\usepackage[T1]{fontenc} % Add this line
 \usepackage{lmodern}
 \usepackage[french]{babel}
 \usepackage{amsmath}
@@ -6,14 +7,45 @@
 \usepackage{graphicx}
 \usepackage{geometry}
 
+\geometry{
+    left=2cm,
+    right=2cm,
+    top=4cm,
+    bottom=4cm
+}
 
-\title{Fonctions ocaml utiles en td d'os}
+\title{Fonctions OCaml utiles en TD d'OS}
 \author{Nathan Boyer}
-
 
 \begin{document}
 
 \maketitle
 
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{|p{4cm}|p{3cm}|p{7cm}|} % Adjusted column widths
+        \hline
+        Fonction & Signature & Effet \\ 
+        \hline 
+        handle\_unix\_error f x & (a->b) -> a -> b & Applique f à x et renvoie le résultat, si le résultat est une erreur, ça écrit l'erreur et ça interrompt avec le code de sortie 2 \\ 
+        \hline 
+        stats & type & type enregistrement qui contient plein d'infos sur un fichier, notamment st\_ino le numero de noeud et st\_dev le numere de partition \\ 
+        \hline 
+        stat f & string -> stats & renvoie les stats du fichier f \\ 
+        \hline 
+        dir\_handle & type & descripteur d'un dossier ouvert \\ 
+        \hline 
+        opendir d & string -> dir\_handle & Renvoie un dir\_handle du dossier d \\ 
+        \hline 
+        readdir d & dir\_handle -> string & Renvoie la prochaine entree du dossier d, leve End\_Of\_File si on en est a la fin \\ 
+        \hline 
+        closedir d & dir\_handle -> unit & Ferme le dossier \\ 
+        \hline 
+        file_perm & type (=int) & les permissions d'un fichier \\ 
+        \hline 
+    \end{tabular}
+    \caption{Tableau des fonctions OCaml}
+    \label{tab:tableau1} 
+\end{table}
 
 \end{document}
