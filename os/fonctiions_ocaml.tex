@@ -89,6 +89,26 @@ pipe & unit -> file\_descr * file\_descr & Créer un pipe. Le premier composant 
 \hline 
 dup2 scr dst & file\_descr -> file\_descr -> unit & duplique src vers dst, en fermant dst si déjà ouvert \\ 
 \hline 
+gethostbyname & string -> host\_entry & Trouver une entrée dans les hosts avec le nom donné \\ 
+\hline 
+sockaddr & ADDR\_UNIX of string | ADDR\_INET of inet\_addr * int & Le type des addresses de sockets \\ 
+\hline 
+socket & socket\_domain -> socket\_type -> int -> file\_descr & Crée une nouvelle socket dans le domaine donné, et avec le type donné (SOCK\_STREAM c bien). Le troisième argument est le type de protocole ; 0 sélectionne le protocole par défaut pour ce type de sockets \\ 
+\hline 
+connect & file\_descr -> sockaddr -> unit & Connecte une socket à une addresse \\ 
+\hline 
+send & file\_descr -> bytes -> int -> int -> msg\_flag list -> int & Envoyer data a travers connected socket \\ 
+\hline 
+recv & file\_descr -> bytes -> int -> int -> msg\_flag list -> int & Recevoir data a travers connected socket \\ 
+\hline 
+in/out\_channel\_of\_descr & file\_descr -> in/out\_channel & Création d'un canal d'entrée/sortie lisant le descripteur donné \\ 
+\hline 
+bind & file\_descr -> sockaddr -> unit & Bind une socket à une addresse \\ 
+\hline 
+listen & file\_descr -> int -> unit & Met en place un socket pour recevoir les demandes de connexion. L'argument entier est le nombre maximal de demandes en attente. \\ 
+\hline 
+accept & file\_descr -> file\_descr * sockaddr & Accepte les connexions sur le socket donné. Le descripteur renvoyé est un socket connecté au client ; l'adresse renvoyée est l'adresse du client connecté \\ 
+\hline 
 \caption{Tableau des fonctions OCaml}
 \label{tab:tableau1} 
 \end{longtable}
