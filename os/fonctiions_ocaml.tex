@@ -54,6 +54,22 @@
         \hline 
         String.create n & int -> bytes & renvoie une nouvelle séquence d'octets de longueur n. La séquence n'est pas initialisée et contient des octets arbitraires \\ 
         \hline 
+        fork & unit -> int & Crée un nouveau processus. L'entier retourné est 0 pour le processus enfant, le pid du processus enfant pour le processus parent \\ 
+        \hline 
+        execv prog args & string -> string array -> 'a & exécute le programme dans le fichier prog, avec les arguments args, et l'environnement du processus en cours. Ces fonctions execv* ne renvoient jamais rien : en cas de succès, le programme actuel est remplacé par le nouveau \\ 
+        \hline 
+        execvp prog args & string -> string array -> 'a & Identique à Unix.execv, sauf que le programme est recherché dans le chemin d'accès. \\ 
+        \hline 
+        chdir & string -> unit & change le repertoire de travail \\ 
+        \hline 
+        getcwd & renvoie le repertoire de travail & Effet \\ 
+        \hline 
+        getenv & string -> string & renvoie valeur d'une variable d'environnement (genre HOME) \\ 
+        \hline 
+        signal\_behavior & Signal\_default | Signal\_ignore | Signal\_handle of f & Signal\_default = abort \\ 
+        \hline 
+        Sys.set\_signal & int -> signal\_behavior -> unit & Définit le comportement du système à la réception d'un signal donné. Le premier argument est le numéro du signal \\ 
+        \hline 
     \end{tabular}
     \caption{Tableau des fonctions OCaml}
     \label{tab:tableau1} 
