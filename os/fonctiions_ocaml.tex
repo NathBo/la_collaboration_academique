@@ -43,6 +43,17 @@
         \hline 
         file\_perm & type (=int) & les permissions d'un fichier \\ 
         \hline 
+        openfile & string -> open\_flag list -> file\_perm -> file\_descr & ouvre le fichier, 3eme argument c les perms qu'on donne au fichier au cas où on le crée \\ 
+        \hline 
+        lseek & file\_descr -> int -> seek\_command -> int & définit la position actuelle du descripteur de fichier et renvoie l'offset résultant (mais on s'en fout du résultat, utiliser ignore)
+        la seek\_command c SEEK\_SET pour depuis le debut (yen a 2 autres aussi) \\ 
+        \hline 
+        read fd buffer start length & file\_descr -> bytes -> int -> int -> int & lit len octets du descripteur fd, en les stockant dans la séquence d'octets buf, à partir de la position pos dans buf. Retourne le nombre d'octets effectivement lus \\ 
+        \hline
+        bytes & type & comme un string mais mutable \\ 
+        \hline 
+        String.create n & int -> bytes & renvoie une nouvelle séquence d'octets de longueur n. La séquence n'est pas initialisée et contient des octets arbitraires \\ 
+        \hline 
     \end{tabular}
     \caption{Tableau des fonctions OCaml}
     \label{tab:tableau1} 
